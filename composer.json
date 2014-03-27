@@ -1,0 +1,23 @@
+{
+    "name": "jerive/csvtool",
+    "description": "CSV file manipulation powered by PHP's fgetcsv",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jérôme Viveret",
+            "email": "jerome.viveret@gmail.com"
+        }
+    ],
+    "minimum-stability": "beta",
+    "require": {
+        "symfony/console": "~2.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "Jerive\\CsvTool\\": "src/"
+        }
+    },
+    "bin": [
+        "bin/csvtool"
+    ]
+}
