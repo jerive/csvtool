@@ -15,5 +15,6 @@ $app->add(new Cmd\CutCommand);
 $app->add(new Cmd\CallbackCommand);
 $app->add(new Cmd\AppendCommand);
 $app->add(new Cmd\MergeCommand);
+$app->add(new Cmd\PadCommand);
 
 $app->run(new ArgvInput);
