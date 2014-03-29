@@ -9,19 +9,18 @@ class Writer
 
     protected $enclosure = '"';
 
-    public function __construct($filename)
+    /**
+     * @param <resource> $handle
+     */
+    public function __construct($handle)
     {
-        if ($filename === '-') {
-            $filename = STDOUT;
-        }
-
-        $this->handle = is_resource($filename) ? $filename : fopen($filename, 'w');
+        $this->handle = $handle;
     }
 
     /**
-     * @param string $delimiter
-     * @param string $enclosure
-     * @param string $escape
+     * @param <string> $delimiter
+     * @param <string> $enclosure
+     * @param <string> $escape
      */
     public function setCsvControl($delimiter = ',', $enclosure = '"')
     {

@@ -25,15 +25,11 @@ class Reader implements \SeekableIterator
     protected $header;
 
     /**
-     * @param <string|resource> $filename
+     * @param <resource> $handle
      */
-    public function __construct($filename)
+    public function __construct($handle)
     {
-        if ($filename === '-') {
-            $filename = STDIN;
-        }
-
-        $this->handle = is_resource($filename) ? $filename : fopen($filename, 'r');
+        $this->handle = $handle;
     }
 
     /**
@@ -100,10 +96,11 @@ class Reader implements \SeekableIterator
         }
     }
 
+    /**
+     * NOOP
+     */
     public function rewind()
-    {
-        rewind($this->handle);
-    }
+    { }
 
     public function valid()
     {

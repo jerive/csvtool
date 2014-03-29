@@ -32,8 +32,7 @@ class AbstractCommand extends Command
      */
     protected function getReader(InputInterface $input, $i = 0)
     {
-        $files  = $input->getArgument('files');
-        $reader = new Reader(isset($files[$i]) ? $files[$i] : '-');
+        $reader = new Reader($this->getReadHandle($input, $i));
         $reader->setBufferSize($input->getOption('bufsize'));
         $reader->setCsvControl(
                 $input->getOption('delimiter'),
@@ -51,12 +50,34 @@ class AbstractCommand extends Command
      */
     protected function getWriter(InputInterface $input)
     {
-        $writer = new Writer($input->getOption('output'));
+        $writer = new Writer($this->getWriteHandle($input));
         $writer->setCsvControl(
                 $input->getOption('outputDelimiter'),
                 $input->getOption('outputEnclosure')
         );
 
         return $writer;
+    }
+
+    protected function getReadHandle($input, $i)
+    {
+        $files = $input->getArgument('files');
+
+        if (isset($files[$i]) && '-' !== $files[$i]) {
+            return fopen($files[$i], 'r');
+        }
+
+        return STDIN;
+    }
+
+    protected function getWriteHandle($input)
+    {
+        $o = $input->getOption('output');
+
+        if ('-' === $o) {
+            return STDOUT;
+        }
+
+        return fopen($o, 'w');
     }
 }
