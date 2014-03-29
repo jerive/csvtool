@@ -1,6 +1,7 @@
+# Installation
 
 This tool is intended to be used on the command line.
-To install it, install composer first.
+To install it, install composer first (https://getcomposer.org/download/)
 
 ```shell
 composer global require jerive/csvtool dev-master
