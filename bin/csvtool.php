@@ -1,7 +1,7 @@
 #!/usr/bin/php
 <?php
 
-require_once __DIR__ . '/../vendor/autoload.php';
+(@include_once __DIR__ . '/../vendor/autoload.php') || @include_once __DIR__ . '/../../../autoload.php';
 
 use Symfony\Component\Console\Input\ArgvInput;
 use Jerive\CsvTool\Command as Cmd;
