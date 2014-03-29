@@ -6,11 +6,12 @@ To install it, install composer first.
 composer global require jerive/csvtool dev-master
 ```
 
-You can easily install csvtool with composer. Just add the following to your `composer.json`file:
+You can still install csvtool locally with composer.
+Just add the following to your `composer.json`file:
 
 ```json
     {
-        require: {
+        "require": {
             "jerive/csvtool": "dev-master"
         }
     }
